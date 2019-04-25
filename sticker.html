@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="MobileOptimized" content="width" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="format-detection" content="address=no" />
+    </head>
+
+    <body>
+      <style>
+
+        #gnezdo_ru_18469 {
+          display: none !important;
+        }
+
+        * {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            user-select: none;
+            text-size-adjust: 100%;
+            font-family: sans-serif;
+            text-decoration: none;
+        }
+
+        .main {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0px;
+          left: 0px;
+          overflow: hidden;
+        }
+
+        .hidden-block {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          opacity: 0;
+          transform: translateY(100%);
+          transition: transform 0.4s, opacity 0.4s;
+        }
+
+        .content {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          z-index: 2;
+          box-sizing: border-box;
+          overflow: hidden;
+          border: 1px solid #9400d3;
+        }
+
+        .box {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          overflow: hidden;
+        }
+
+        .img-box {
+          position: absolute;
+          z-index: 2;
+          box-shadow: rgba(0, 0, 0, 0.15) 10px 0px 30px 0px;
+          overflow: hidden;
+        }
+
+        .img {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0px;
+          left: 0px;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        .text-box {
+          position: absolute;
+          display: table;
+          height: 100%;
+          top: 0px;
+          text-align: center;
+          z-index: 1;
+          overflow: hidden;
+        }
+
+        .text-box > div {
+          display: table-cell;
+          vertical-align: middle;
+          box-sizing: border-box;
+        }
+
+        .title {
+          font-weight: bold;
+          font-size: 1em;
+        }
+
+        .sub-title {
+          margin-top: .2em;
+        }
+
+        .text-button {
+          text-align: center;
+          background-color: green;
+          z-index: 3;
+          box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 20px 0px;
+          overflow: hidden;
+          margin-top: 0.3em;
+        }
+
+        .button > span, .text-button > span {
+            display: block;
+            box-sizing: border-box;
+            padding: .7em 1.5em;
+            color: #ffffff;
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: rgba(0,0,0,0);
+            transition: background-color .3s;
+        }
+
+        .text-button-in {
+          display: block;
+          box-sizing: border-box;
+          color: white;
+          font-weight: bold;
+          text-transform: uppercase;
+          background-color: rgba(0, 0, 0, 0);
+          transition: background-color 0.3s ease 0s;
+        }
+
+        .button {
+          position: absolute;
+          text-align: center;
+          background-color: green;
+          z-index: 3;
+          box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 20px 0px;
+          overflow: hidden;
+          bottom: 50%;
+          transform: translateY(50%);
+        }
+
+        .css-button-in {
+          display: block;
+          box-sizing: border-box;
+          color: white;
+          font-weight: bold;
+          text-transform: uppercase;
+          background-color: rgba(0, 0, 0, 0);
+          transition: background-color 0.3s ease 0s;
+        }
+
+        a {
+          color: black;
+          cursor: pointer;
+          text-decoration: none;
+        }
+        }
+      </style>
+
+      <script>
+        (function() {
+
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://fcgi.gnezdo.ru/cgi-bin/tzr.fcgi?id=18469&json=1', true);
+        request.send();
+
+        request.onreadystatechange = function() {
+          if (request.readyState == 4 && request.status == 200) {
+            var data = JSON.parse(request.responseText)["data"][0];
+            createBanner(data);
+          }
+        }
+
+        function createBanner(data) {
+        var main = document.createElement('a');
+        var hiddenBlock = document.createElement('div');
+        var content = document.createElement('div');
+        var box = document.createElement('div');
+        var imgBox = document.createElement('div');
+        var img = document.createElement('div');
+        var textBox = document.createElement('div');
+        var block = document.createElement('div');
+        var title = document.createElement('div');
+        var subtitle = document.createElement('div');
+        var textButton = document.createElement('div');
+        var textButtonIn = document.createElement('span');
+        var button = document.createElement('div');
+        var buttonIn = document.createElement('span');
+
+        main.classList.add('main');
+        hiddenBlock.classList.add('hidden-block');
+        content.classList.add('content');
+        box.classList.add('box');
+        imgBox.classList.add('img-box');
+        img.classList.add('img');
+        textBox.classList.add('text-box');
+        title.classList.add('title');
+        subtitle.classList.add('sub-title');
+        textButton.classList.add('text-button');
+        textButtonIn.classList.add('text-button-in');
+        button.classList.add('button');
+        buttonIn.classList.add('button-in');
+
+        imgBox.appendChild(img);
+
+        textButton.appendChild(textButtonIn);
+
+        block.appendChild(title);
+        block.appendChild(subtitle);
+        block.appendChild(textButton);
+
+        textBox.appendChild(block);
+
+        button.appendChild(buttonIn);
+
+        box.appendChild(imgBox);
+        box.appendChild(textBox);
+        box.appendChild(button);
+
+        content.appendChild(box);
+        hiddenBlock.appendChild(content);
+        main.appendChild(hiddenBlock);
+
+        document.body.insertBefore(main, document.body.querySelector('script'));
+
+        var screen = {
+          get width() {
+            return Math.min(document.documentElement.clientWidth, window.innerWidth || 0)
+          },
+          get height() {
+              return Math.min(document.documentElement.clientHeight, window.innerHeight || 0)
+          },
+          get state() {
+              return this.width < this.height * 4 ? 1 : 0 // 1 - portrait
+          },
+          get device() {
+            return this.state && this.width < 450 && this.height * 4 < 850 || !this.state && this.width < 850 && this.height * 4 < 450 ? 1 : 0
+          }
+        };
+
+        var box = {
+          get width() {
+            return screen.width - 2 * this.indent
+          },
+          get height() {
+            return screen.height - 2 * this.indent
+          },
+          get indent() {
+            return 15
+          }
+        };
+
+        var cmnd = {
+          setFont: function() {
+            var index = screen.device ? screen.state ? .085 : .16 : screen.state ? .1 : .12;
+            document.body.style.fontSize = Math.floor(index * screen.height) + 'px';
+          },
+          setImgSize: function() {
+            imgBox.style.height = screen.state ? box.height + 'px' : '100%';
+            imgBox.style.width = screen.state ? box.height + 'px' : box.height + box.indent + 'px';
+            imgBox.style.top = screen.state ? box.indent + 'px' : 0;
+            imgBox.style.left = screen.state ? box.indent + 'px' : 0;
+          },
+          setTextSize: function() {
+            var buttonIndent = screen.device ? 1.5 : 3;
+            textBox.style.width = screen.state ?  screen.width - 4 * box.indent - box.height + 'px' : (screen.width - box.height - 2 * buttonIndent * box.indent - button.clientWidth) * .87 + 'px';
+            textBox.style.left = box.height + 2 * box.indent + "px";
+            title.style.fontSize = data.title && data.subtitle ? "1em" : "1.2em";
+            subtitle.style.fontSize = "1em";
+          },
+          setButtonSize: function() {
+            button.style.display = screen.state ? 'none' : 'block';
+            button.style.right = screen.device ? 1.5 * box.indent + 'px' : 3 * box.indent + 'px';
+            button.style.bottom = '50%';
+            button.style.transform = 'translateY(50%)';
+            buttonIn.innerHTML = 'подробнее';
+            textButton.style.display = screen.state ? 'block' : 'none';
+            textButtonIn.style.fontSize = data.title && data.subtitle ? ".7em" : ".9em";
+            textButtonIn.innerHTML = 'подробнее';
+          },
+          setData: function() {
+            if (data.url) {
+               main.href = data.url;
+               main.target = '_blank';
+               main.style.cursor = 'pointer';
+             }
+             if (data.title) {
+               title.innerHTML = data.title;
+             }
+             if (data.subtitle) {
+               subtitle.innerHTML = data.subtitle;
+             }
+             if (data.img) {
+               img.style.setProperty('background-image', 'url("' + data.img + '")', 'important');
+             }
+          },
+          appear: function() {
+            hiddenBlock.style.opacity = '1';
+            hiddenBlock.style.transform = 'translateY(0)';
+          },
+          check: function() {
+            if (textBox.clientHeight > content.clientHeight) {
+                subtitle.style.display = 'none';
+            } else {
+              subtitle.style.display = 'block';
+            }
+          }
+        };
+
+        cmnd.setData();
+        cmnd.setFont();
+        cmnd.setButtonSize();
+        cmnd.setImgSize();
+        cmnd.setTextSize();
+        cmnd.check();
+        cmnd.appear();
+
+        window.addEventListener('resize', function() {
+           cmnd.setFont();
+           cmnd.setButtonSize();
+           cmnd.setImgSize();
+           cmnd.setTextSize();
+           cmnd.check();
+       });
+      };
+    })();
+      </script>
+    </body>
+
+</html>
